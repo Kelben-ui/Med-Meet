@@ -1,0 +1,18 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+a{
+    text-decoration: none;
+
+}
+ul{
+    list-style: none;
+}
+#hero{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
