@@ -3,51 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Med-Meet</title>
-    <link rel="stylesheet" href="style.css">
+    <title>MedMeet - Sign In/Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign Up</a></li>
-            </ul>
-        </nav>
-        <h1>Med-Meet</h1>
-        <h2>Your Health, Our Priority</h2>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Welcome to your healthcare at home</h2>
-            <p>Our platform is designed to provide you with easy access to trusted healthcare resources, helping you manage your health with confidence. Whether you're tracking your wellness, connecting with healthcare professionals, or accessing medical information, we're here to support you every step of the way.</p>
-            <button>Book a Consultation</button>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">MedMeet</h2>
+            <div class="form-content">
+                <form id="signin-form">
+                    <h3>Sign In</h3>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Sign In</button>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </form>
+                <form id="signup-form">
+                    <h3>Sign Up</h3>
+                    <div class="role-selection">
+                        <button class="role-btn active" data-role="patient">Patient</button>
+                        <button class="role-btn" data-role="doctor">Doctor</button>
+                    </div>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <div class="doctor-fields" style="display: none;">
+                        <input type="text" placeholder="Specialization" required>
+                        <input type="text" placeholder="License Number" required>
+                        <input type="text" placeholder="Hospital Affiliation" required>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <div class="form-toggle">
+                    <p>Don't have an account? <a href="#">Sign Up</a></p>
+                    <p>Already have an account? <a href="#">Sign In</a></p>
+                </div>
+            </div>
         </div>
-    </section>
-<div class="site-items">
-    <section class="features">
-        <h2>Why Choose Med-Meet?</h2>
-        <div class="feature-box">
-            <h3>Expert Doctors</h3>
-            <p>Consult with highly qualified and experienced doctors.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Secure and Confidential</h3>
-            <p>Your health information is safe and secure.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Easy to Use</h3>
-            <p>Simple and intuitive platform for seamless consultations.</p>
-        </div>
-    </section>
-    <img src="doctor.PNG" alt="Doctor-patient consultation" height="170" width="200px">
-</div>
-    <footer>
-        <p>&copy; 2024 Med-Meet. All rights reserved.</p>
-    </footer>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
