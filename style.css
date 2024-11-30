@@ -1,0 +1,91 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+/* Header Styling */
+header {
+  background-color: #007BFF; /* Blue background */
+  color: white;
+  text-align: center;
+  height: 33vh; /* 1/3 of the page */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+.hero .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.hero .btn:hover {
+  background-color: #0056b3;
+}
+/* Features Section */
+.features {
+  padding: 20px;
+  text-align: center;
+}
+.features .feature {
+  margin: 20px auto;
+  max-width: 800px;
+}
+.features img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
+  display: none;
+}
+.features img.active {
+  display: block;
+}
+/* Footer Styling */
+footer {
+  background-color: #007BFF;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+}
+
+/* Slider Animation */
+@keyframes fade {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+.features img.active {
+  animation: fade 1s;
+}
