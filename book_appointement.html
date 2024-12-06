@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Hospital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>MED-MEET</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Appointments</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Image -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Book Your Appointment Online</h2>
+            <p>Schedule your consultation with our experienced doctors from the comfort of your home.</p>
+        </div>
+    </section>
+
+    <!-- Appointment Booking Form Section -->
+    <section class="appointment-form">
+        <div class="container">
+            <h2>Book an Appointment</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctor">Select Doctor by specialties</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="dr-smith">Cardiologist</option>
+                        <option value="dr-jones">Dermatologist</option>
+                        <option value="dr-lee">General surgeon</option>
+                        <option value="dr-lee">General Consultant</option>
+                        <option value="dr-lee">Pediatric</option>
+                        <option value="dr-lee">Infectios desease specialist</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Select Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Select Time</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <button type="submit" class="btn">Book Appointment</button>
+            </form>
+        </div>
+    </section>
+
+
+</body>
+</html>

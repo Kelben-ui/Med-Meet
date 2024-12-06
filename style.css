@@ -1,82 +1,121 @@
-/* ... */
-.form-container {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
 }
 
-.form-title {
-    text-align: center;
-    margin-bottom: 20px;
+header {
+    background-color: #0055a5;
+    color: white;
+    padding: 20px 0;
 }
 
-.form-content {
+header .container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
-.form-content form {
-    width: 100%;
+header .logo h1 {
+    font-size: 2.5em;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+}
+
+/* Hero Section with Background Image */
+.hero {
+    background-image: url('hospital-background.jpg'); /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    color: rgb(12, 12, 12);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 3em;
     margin-bottom: 20px;
 }
 
-.form-content input {
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+/* Appointment Form Section */
+.appointment-form {
+    padding: 50px 20px;
+    background-color: white;
+}
+
+.appointment-form h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.appointment-form .form-group {
+    margin-bottom: 20px;
+}
+
+.appointment-form label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.appointment-form input,
+.appointment-form select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.form-content button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
+.appointment-form button {
+    width: 100%;
+    padding: 15px;
+    background-color: #0055a5;
+    color: white;
+    font-size: 1.2em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.form-content .forgot-password {
-    text-align: right;
-    margin-bottom: 10px;
-    color: #007bff;
-    text-decoration: none;
+.appointment-form button:hover {
+    background-color: #004080;
 }
 
-.role-selection {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.role-btn {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.role-btn.active {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.doctor-fields {
-    display: none;
-}
-
-.form-toggle {
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
     text-align: center;
-    margin-top: 20px;
+    padding: 20px 0;
 }
 
-.form-toggle a {
-    color: #007bff;
-    text-decoration: none;
+footer p {
+    font-size: 1em;
 }
-
-/* ... */
