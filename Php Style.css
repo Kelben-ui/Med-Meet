@@ -1,0 +1,32 @@
+header {
+    background-color: blue;
+    height: 33.33%;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  header nav ul li {
+    float: left;
+  }
+  
+  header nav ul li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  header nav ul li a:hover {
+    background-color: #ddd;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
