@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="role">I want to login as a:</label>
+            <select id="role" name="role">
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+                <option value="others">Others</option>
+            </select>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+    <script>
+       function login() {//The javascript function for the 
+    const role = document.getElementById('role').value;
+    if (role === 'patient') {
+        window.location.href = 'Patient Home Page.html'; // Redirects to the patient's page
+    } else if (role === 'doctor') {
+        window.location.href = 'doctor/index.html'; // Redirects to the doctor's page
+
+    } else {
+        alert("Please select a role before logging in.");
+    }
+}
+
+    </script>
+</body>
+</html>
