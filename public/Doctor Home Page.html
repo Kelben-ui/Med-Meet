@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Portal</title>
+    <link rel="stylesheet" href="DHP style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">MedMeet</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#appointments">Appointments</a></li>
+                <li><a href="#patients">Patients</a></li>
+                <li><a href="#messages">Messages</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section id="dashboard" class="section">
+            <h1>Welcome, Dr. [Name]</h1>
+            <p>Here is an overview of your daily schedule and updates:</p>
+            <div class="stats">
+                <div class="stat">
+                    <h2>10</h2>
+                    <p>Appointments Today</p>
+                </div>
+                <div class="stat">
+                    <h2>25</h2>
+                    <p>Total Patients</p>
+                </div>
+                <div class="stat">
+                    <h2>5</h2>
+                    <p>New Messages</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="appointments" class="section">
+            <h2>Today's Appointments</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Patient Name</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00 AM</td>
+                        <td>John Doe</td>
+                        <td>Follow-up</td>
+                        <td>Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 AM</td>
+                        <td>Jane Smith</td>
+                        <td>Consultation</td>
+                        <td>Pending</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="patients" class="section">
+            <h2>Patients</h2>
+            <ul class="patient-list">
+                <li>
+                    <strong>John Doe</strong>
+                    <span>Last Visit: 01/12/2024</span>
+                </li>
+                <li>
+                    <strong>Jane Smith</strong>
+                    <span>Last Visit: 01/11/2024</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="messages" class="section">
+            <h2>Messages</h2>
+            <ul class="messages-list">
+                <li>
+                    <strong>John Doe:</strong> Thank you for the consultation.
+                </li>
+                <li>
+                    <strong>Jane Smith:</strong> I have a question about my prescription.
+                </li>
+            </ul>
+        </section>
+
+        <section id="profile" class="section">
+            <h2>Your Profile</h2>
+            <form class="profile-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" value="Dr. [Name]">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="doctor@example.com">
+
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization" value="General Practitioner">
+
+                <button type="submit">Update Profile</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 MedMeet. All rights reserved.</p>
+    </footer>
+</body>
+</html>

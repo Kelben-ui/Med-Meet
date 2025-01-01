@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Online Consultation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?healthcare,signup') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input, select {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: #0077c8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Create an Account</h1>
+        <form id="signupForm" action="/api/signup" method="post">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <label for="role">Sign Up As</label>
+            <select id="role" name="role" required>
+                <option value="">-- Select Role --</option>
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+            </select>
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+
+   <!-- <script>
+        const form = document.getElementById('signupForm');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const role = document.getElementById('role').value;
+
+            if (role === 'patient') {
+                window.location.href = 'Patient Home Page.html';
+            } else if (role === 'doctor') {
+                window.location.href = 'doctor/index.html';
+            } else {
+                alert('Please select a role to continue.');
+            }
+        });
+    </script> -->
+</body>
+</html>

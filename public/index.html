@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med Meet</title>
+    <link href="style.css" rel="stylesheet">
+     </head>
+<body>
+    <header>
+        <h1>Welcome to Med Meet!</h1>
+        <h2>Your Health is our priority!</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p>Your Health, Your Wealth!</p>
+            <p>Book appointments, consult with doctors, and manage your health records online.</p>
+            
+        </section>
+        <section class="features">
+            <h2>Key Features</h2>
+            <div class="feature">
+                <h3>Online Consultations</h3>
+                <p>Consult with doctors from the comfort of your home.</p>
+                <img src="pexels-tima-miroshnichenko-8376235.jpg" alt="A doctor consulting a patient remotely" width="500" height="500">
+                <img src="pexels-shkrabaanthony-7345465.jpg" alt="A doctor consulting a patient remotely" width="500" height="500">
+                <img src="pexels-karolina-grabowska-7195091.jpg" alt="A doctor consulting a patient remotely" width="500" height="500">
+            </div>
+            <div class="feature">
+                <h3>Appointment Booking</h3>
+                <p>Book appointments with ease and get reminders.</p>
+            </div>
+            <div class="feature">
+                <h3>Health Records</h3>
+                <p>Access and manage your health records securely.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Med Meet. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const images = document.querySelectorAll(".features img");
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add("active");
+        }
+
+        setInterval(showNextImage, 3000); // Change image every 3 seconds
+    });
+</script>
+
