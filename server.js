@@ -1,34 +1,42 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
-const path = require("path");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { error } = require('console');
+const path = require('path');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
-// Create Express app 
+// Create Express app
 const app = express();
 
-// Middleware to parse form data
+// Middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // Enable parsing of URL-encoded bodies
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve the HTML file
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public'));
+// CORS setup to allow cross-origin requests
+app.use(cors());
+
+// Serve the React app (change this to the correct build folder if needed)
+app.use(express.static(path.join(__dirname, 'my-vite-react-app', 'dist')));
+
+// Catch-all route to serve index.html
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'my-vite-react-app', 'dist', 'index.html'));
 });
 
 // Connect to MySQL Database
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: 'localhost',
-    user: 'root', //
-    password: 'Judeawoh15', // 
-    database: 'medmeet' // 
+    user: 'root',
+    password: 'Judeawoh15',
+    database: 'medmeet',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
 // Test Database Connection
-db.connect(err => {
+db.getConnection((err) => {
     if (err) {
         console.error('Database connection failed:', err);
         return;
@@ -42,41 +50,62 @@ app.post('/api/signup', async (req, res) => {
 
     // Validate required fields
     if (!fullName || !email || !password || !role) {
-        return res.status(400).send('All fields are required');
+        return res.status(400).json({ error: 'All fields are required' });
     }
 
-    // Hash the password before storing it in the database
-    const hashedPassword = await bcrypt.hash(password, 10);
-   
-    //Determine the table based on the role
+    // Validate email format using a regex pattern
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ error: 'Invalid email format' });
+    }
+
+    // Determine the table based on the role
     let tableName;
     if (role === 'patient') {
-        tableName = 'Patients'; // For patients, use the Patients table
-    } 
-    else {
-        tableName = 'Doctors'; // For doctors, use the Doctors table
+        tableName = 'Patients';
+    } else if (role === 'doctor') {
+        tableName = 'Doctors';
+    } else {
+        return res.status(400).json({ error: 'Invalid role' });
     }
 
-    // Insert user data into the database
-    const sql = `INSERT INTO ${tableName} (Full_name, Email_Address, Password) VALUES (?, ?, ?)`;
-    db.query(sql, [fullName, email, hashedPassword], (err, result) => {
+    // Check if the email already exists in the database
+    const checkEmailQuery = `SELECT * FROM ${tableName} WHERE Email_Address = ?`;
+    db.query(checkEmailQuery, [email], async (err, results) => {
         if (err) {
-            console.error('Error inserting data:', err);
-            res.status(500).send('Error saving data');
-            return;
+            console.error('Error checking email:', err);
+            return res.status(500).json({ error: 'Error checking email' });
         }
-        console.log('Added:', result);
-        res.redirect("/");
+
+        // If email already exists
+        if (results.length > 0) {
+            return res.status(400).json({ error: 'Email is already in use' });
+        }
+
+        // Hash the password before storing it in the database
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Insert user data into the database
+        const sql = `INSERT INTO ${tableName} (Full_name, Email_Address, Password) VALUES (?, ?, ?)`;
+        db.query(sql, [fullName, email, hashedPassword], (err, result) => {
+            if (err) {
+                console.error('Error inserting data:', err);
+                return res.status(500).json({ error: 'Error saving data' });
+            }
+            console.log('Added:', result);
+            // Respond with a success message, frontend can use this to redirect to login page
+            return res.status(200).json({ message: 'Signup successful, please log in.', redirectTo: 'patient-portal'});
+        });
     });
 });
 
-//Handle Login Form Submission 
+// Handle Login Form Submission
 app.post('/api/login', (req, res) => {
     const { email, password, role } = req.body;
 
     // Validate required fields
     if (!email || !password || !role) {
-        return res.status(400).json({error: 'All fields are required' });
+        return res.status(400).json({ error: 'All fields are required' });
     }
 
     // Determine the table based on the role
@@ -94,11 +123,11 @@ app.post('/api/login', (req, res) => {
     db.query(sql, [email], async (err, results) => {
         if (err) {
             console.error('Error querying database:', err);
-            return res.status(500).send('Error during login');
+            return res.status(500).json({ error: 'Error during login' });
         }
 
         if (results.length === 0) {
-            return res.status(401).json({ error: `You don't have an account, Please Sign Up`});
+            return res.status(401).json({ error: "You don't have an account, Please Sign Up" });
         }
 
         const user = results[0];
@@ -106,15 +135,12 @@ app.post('/api/login', (req, res) => {
         // Compare the hashed password
         const passwordMatch = await bcrypt.compare(password, user.Password);
         if (!passwordMatch) {
-            return res.status(401).json({ error: `Wrong Password, please enter the right password or Sign Up`});
+            return res.status(401).json({ error: 'Wrong password, please try again or Sign Up' });
         }
 
-        // Redirect based on role
-        if (role === 'patient') {
-            res.redirect('public/Patient Home Page.html');
-        } else if (role === 'doctor') {
-            res.redirect('public/Doctor Home Page.html');
-        }
+        // JWT Token generation or session management can be added here if necessary
+        // For now, you can return a success message or token
+        return res.status(200).json({ message: 'Login successful', redirectTo: '/patient-portal' });
     });
 });
 
